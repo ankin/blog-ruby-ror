@@ -41,5 +41,9 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# File upload
+# File upload: https://github.com/thoughtbot/paperclip
 gem "paperclip", "~> 4.2"
+
+# Transforming URLs to appropriate resource (image, link, YouTube, Vimeo video,...): https://github.com/dejan/auto_html
+gem "auto_html"
+

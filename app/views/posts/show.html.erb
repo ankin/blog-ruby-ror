@@ -5,7 +5,35 @@
  
 <p>
   <strong>Text:</strong>
-  <%= @post.text %>
+  <%= @post.text_html %>
 </p>
+
+
+<h2>Attachments:</h2>
+
+<% @post.attachments.each do |attachment| %>
+    <p>
+      <strong>Description:</strong>
+      <%= attachment.text %>
+    </p>
+
+    <p>
+      <strong>Image:</strong>
+      <%= image_tag attachment.image.url %>
+    </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_for([@post, @post.attachments.build], :html => { :multipart => true } )  do |f| %>
+
+    <p>
+      <%= f.text_area :text %>
+      <%= f.file_field :image %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>
+
 
 <%= link_to 'Back', posts_path %>
