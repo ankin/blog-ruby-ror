@@ -5,7 +5,12 @@ class AttachmentsController < ApplicationController
     @post = Post.find params[:post_id]
     @attachment = @post.attachments.create( attachment_params )
 
-    redirect_to @post
+    @post.text << "\n"
+    @post.text << @attachment.text
+    @post.text << "\n"
+    @post.text << (request.protocol + request.host_with_port +  @attachment.image.url)
+    @post.text << "\n"
+    render 'posts/edit'
   end
 
   private
