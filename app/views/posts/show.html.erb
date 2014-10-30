@@ -1,3 +1,6 @@
+<ul class="breadcrumbs">
+  <li><%= link_to t(:back), posts_path %></li>
+</ul>
 
 <strong>
   <%= @post.title %>
@@ -7,10 +10,4 @@
   <%= @post.text_html %>
 </p>
 
-
-
 <%= render @post.attachments %>
-
-
-
-<%= link_to 'Назад', posts_path %>

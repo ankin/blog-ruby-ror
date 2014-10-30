@@ -1,0 +1,14 @@
+uk:
+  back: Повернутись
+  new_post: Новий запис
+  edit_post: Редагувати запис
+  edit: Редагувати
+  delete: Видалити
+  post_title_placeholder: Введіть заголовок новини
+  post_text_placeholder: Введіть текст новини
+  title: Заголовок
+  text: Текст
+  logout: Вийти
+  login: Увійти
+  register: Зареєструватись
+

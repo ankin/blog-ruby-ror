@@ -1,20 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+  <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= csrf_meta_tags %>
-  </head>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= csrf_meta_tags %>
+</head>
 
-  <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<body>
+
+<div>
+  <div class="row">
+    <div class="large-2 columns"></div>
+    <div class="large-3 columns" style="background-color: #6599FF">
+      <img width="200px" src="/assets/tmp_logo.svg"/>
+    </div>
+    <div class="large-5 columns" style=" background-color: #6599FF">
+      <br>
+
+      <h1 style="color: #FFDE00"> Wahahaha....</h1>
+
+      <h3 style="color: #FFDE00">Хаханьки і хохоньки</h3>
+    </div>
+    <div class="large-3 columns"></div>
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="large-2 columns"></div>
+  <div class="large-8 columns">
+    <% if not notice.nil? %>
+        <div data-alert class="alert-box success radius">
+          <%= notice %>
+          <a href="#" class="close">&times;</a>
+        </div>
+    <% end %>
+    <% if not alert.nil? %>
+        <div data-alert class="alert-box warning radius">
+          <%= alert %>
+          <a href="#" class="close">&times;</a>
+        </div>
+    <% end %>
+
     <%= yield %>
-    <%= javascript_include_tag "application" %>
-  </body>
+  </div>
+  <div class="large-4 columns">
+    <div class="panel">
+      <% if user_signed_in? %>
+          <%= link_to current_user.email, "users/register/edit/profile" %>
+          <small>(<%= link_to t(:logout), "users/logout", method: :delete %>)</small>
+      <% else %>
+          <%= link_to t(:login), "users/login" %>
+          <br>
+          <%= link_to t(:register), "users/register/sign_up" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= javascript_include_tag "application" %>
+</body>
 </html>

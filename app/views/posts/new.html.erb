@@ -1,4 +1,6 @@
-<h1>Новий запис</h1>
+<ul class="breadcrumbs">
+  <li><%= link_to t(:back), posts_path %></li>
+</ul>
 
 <%= form_for :post, url: posts_path  do |f| %>
 
@@ -14,20 +16,17 @@
         </div>
     <% end %>
 
-    <p>
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
-    </p>
-
-    <p>
-      <%= f.label :text %><br>
-      <%= f.text_area :text %>
-    </p>
+    <fieldset>
+      <legend><%= t :new_post %></legend>
+      <label><%= t :title %>
+        <input type="text" name="post[title]" value="<%= @post.title %>" placeholder="<%= t :post_title_placeholder %>"/>
+      </label>
+      <label><%= t :text %><textarea type="text" name="post[text]" placeholder="<%= t :post_text_placeholder %>"><%= @post.text %></textarea>
+      </label>
+    </fieldset>
 
 
     <p>
       <%= f.submit %>
     </p>
 <% end %>
-
-<%= link_to 'Назад', posts_path %>

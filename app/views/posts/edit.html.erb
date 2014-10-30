@@ -1,4 +1,6 @@
-<h1>Editing article</h1>
+<ul class="breadcrumbs">
+  <li><%= link_to t(:back), posts_path %></li>
+</ul>
 
 <%= form_for :post, url: post_path(@post), method: :patch do |f| %>
     <% if @post.errors.any? %>
@@ -12,24 +14,20 @@
           </ul>
         </div>
     <% end %>
-    <p>
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
-    </p>
 
-    <p>
-      <%= f.label :text %><br>
-      <%= f.text_area :text %>
-    </p>
+    <fieldset>
+      <legend><%= t :edit_post %></legend>
+      <label><%= t :title %>
+        <input type="text" name="post[title]" value="<%= @post.title %>" placeholder="<%= t :post_title_placeholder %>"/>
+      </label>
+      <label><%= t :text %><textarea type="text" name="post[text]" placeholder="<%= t :post_text_placeholder %>"><%= @post.text %></textarea>
+      </label>
+    </fieldset>
 
     <p>
       <%= f.submit %>
     </p>
 
-
-
 <% end %>
 
 <%= render "attachments/form" %>
-
-<%= link_to 'Назад', posts_path%>
