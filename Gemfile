@@ -47,3 +47,12 @@ gem "paperclip", "~> 4.2"
 # Transforming URLs to appropriate resource (image, link, YouTube, Vimeo video,...): https://github.com/dejan/auto_html
 gem "auto_html"
 
+# Foundation front-end framework: http://foundation.zurb.com/
+gem "foundation-rails"
+
+# Authentication framework: https://github.com/plataformatec/devise
+gem "devise"
+
+# Facebook, Twitter ... etc. authentication: https://github.com/intridea/omniauth
+gem "omniauth"
+
