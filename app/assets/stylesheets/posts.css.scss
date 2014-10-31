@@ -1,3 +1,40 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$post-header-font-family: 'PT Sans Narrow', Arial, sans-serif;
+$post-header-font-style: normal;
+$post-header-font-weight: normal;
+$post-header-text-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
+$post-header-text-transform: uppercase;
+$post-header-color: #4e5e6a;
+
+$widget_bg: rgba(255, 255, 255, 0.5);
+
+a {
+  &.post_header {
+    font-family: $post-header-font-family;
+    font-style: $post-header-font-style;
+    font-weight: $post-header-font-weight;
+    text-shadow: $post-header-text-shadow;
+    text-transform: $post-header-text-transform;
+    color: $post-header-color;
+    &:hover {
+      color: #202d3a;
+    }
+  }
+}
+
+.post_widget {
+  border-top: 1px solid #f1f4f9;
+  float: none;
+  margin: 0 0 10px;
+  padding: 15px 20px 15px 30px;
+  background-color: $widget_bg;
+  & h5 {
+    font-family: $post-header-font-family;
+    font-style: italic;
+    color: #b1b1b1;
+
+  }
+}

@@ -1,30 +1,54 @@
+<div class="row">
+  <div class="small-8 columns" style="background-color: #fff">
+    <% @posts.each do |post| %>
 
-<ul class="breadcrumbs">
-  <li><%= link_to t(:new_post), new_post_path %></li>
-</ul>
+        <div style="padding: 1.25rem;">
+          <div class="row" style="border-bottom: 1px solid rgb(241, 241, 241);">
 
-<% @posts.each do |post| %>
+            <div class="large-9 columns">
+              <h3><a class="post_header"
+                     href="<%= post_path(post) %>"><%= post.title %></a></h3></div>
+            <div class="large-3 columns" style="text-align: right;">
+              <small><%= post.created_at.to_formatted_s(:db) %></small>
+            </div>
+          </div>
 
-    <div class="panel radius">
+          <br>
+          <%= post.text_html %>
+
+          <small> <%= link_to t(:edit), edit_post_path(post) %></small>
+          <small><%= link_to t(:delete), post_path(post), method: :delete %></small>
+        </div>
+
+    <% end %>
+  </div>
+
+  <div class="small-4 columns ">
+    <div class="post_widget">
       <div class="row">
-
-        <div class="large-9 columns">
-          <h3><a style="text-decoration: underline;" href="<%= post_path(post) %>"><%= post.title %></a></h3></div>
-        <div class="large-3 columns" style="text-align: right;">
-          <small><%= post.created_at.to_formatted_s(:db) %></small>
+        <div class="small-11 ">
+          <% if user_signed_in? %>
+              <h5 class="post_header" style="margin-bottom: 0"><%= t :welcome %> </h5>
+              <%= link_to current_user.email, "users/register/edit/profile" %>
+              <small>(<%= link_to t(:logout), "users/logout", method: :delete %>)</small>
+          <% else %>
+              <%= link_to t(:login), "users/login" %>
+              <br>
+              <%= link_to t(:register), "users/register/sign_up" %>
+          <% end %>
         </div>
       </div>
-      <br>
-      <%= post.text_html %>
-
-      <small> <%= link_to t(:edit), edit_post_path(post) %></small>
-      <small><%= link_to t(:delete), post_path(post), method: :delete %></small>
     </div>
 
-<% end %>
+    <div class="post_widget">
+      <div class="row">
+        <div class="small-9 small-centered columns">
+          <%= link_to t(:new_post), new_post_path, class: "button [radius round]" %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-
-
-
+</div>
 
 
