@@ -1,29 +1,55 @@
-<h2>Sign up</h2>
+<div class="row">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <div class="small-8  columns" style="background-color: #fff">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <div class="row">
+      <div class="small-10 small-centered columns">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+
+            <fieldset>
+              <legend><%= t :register %></legend>
+              <label><%= t :name %>
+                <small><span data-tooltip aria-haspopup="true" class="has-tip" title="<%= t :name_tooltip %>">?</span>
+                </small>
+                <%= f.text_field :name, autofocus: true %>
+              </label>
+
+              <label><%= t :email %>
+                <small><span data-tooltip aria-haspopup="true" class="has-tip" title="<%= t :email_tooltip %>">?</span>
+                </small>
+                <%= f.email_field :email %>
+              </label>
+
+
+              <label><%= t :password %>
+                <%= f.password_field :password, autocomplete: "off", placeholder: t(:pwd_length_min, count: @minimum_password_length.to_s) %>
+              </label>
+
+              <label><%= t :password_confirmation %>
+                <%= f.password_field :password_confirmation, autocomplete: "off" %>
+              </label>
+            </fieldset>
+
+
+            <div class="row">
+              <div class="small-4 small-centered columns">
+                <%= f.submit "Sign up", class: "button [radius round]" %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+
+
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="small-4 columns ">
+    <div class="post_widget">
+      <div class="row">
+        <div class="small-11 ">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
