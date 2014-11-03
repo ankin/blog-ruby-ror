@@ -8,7 +8,7 @@
             <%= devise_error_messages! %>
 
             <fieldset>
-              <legend><%= t :register %></legend>
+              <legend><%= t :new_user %></legend>
               <label><%= t :name %>
                 <small><span data-tooltip aria-haspopup="true" class="has-tip" title="<%= t :name_tooltip %>">?</span>
                 </small>
@@ -34,7 +34,7 @@
 
             <div class="row">
               <div class="small-4 small-centered columns">
-                <%= f.submit "Sign up", class: "button [radius round]" %>
+                    <%= f.submit t(:send), class: 'button [radius round]' %>
               </div>
             </div>
         <% end %>

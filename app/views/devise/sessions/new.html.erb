@@ -1,26 +1,58 @@
-<h2>Log in</h2>
+<div class="row">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+  <div class="small-8  columns" style="background-color: #fff">
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <div class="row">
+      <div class="small-10 small-centered columns">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+            <fieldset>
+              <legend><%= t :login %></legend>
+
+              <label><%= t :email %>
+                <small><span data-tooltip aria-haspopup="true" class="has-tip" title="<%= t :email_tooltip %>">?</span>
+                </small>
+                <%= f.email_field :email, autofocus: true %>
+              </label>
+
+
+              <label><%= t :password %>
+                <%= f.password_field :password, autocomplete: "off", placeholder: t(:pwd_length_min, count: @minimum_password_length.to_s) %>
+              </label>
+
+              <% if devise_mapping.rememberable? -%>
+                  <label><%= t :remember_me %>
+                    <div class="switch small radius">
+                      <%= f.check_box :remember_me, id: 'remember_me' %>
+                      <label for="remember_me"><%= t :remember_me %></label>
+                    </div>
+                  </label>
+              <% end -%>
+
+            </fieldset>
+
+
+            <div class="row">
+              <div class="small-4 small-centered columns">
+                <%= f.submit t(:login), class: 'button [radius round]' %>
+              </div>
+            </div>
+        <% end %>
+      </div>
     </div>
-  <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+
   </div>
-<% end %>
+  <div class="small-4 columns ">
+    <div class="post_widget">
+      <div class="row">
+        <div class="small-11 ">
+          <%= render "devise/shared/links" %>
+          <%= button_to "Cancel my account", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= render "devise/shared/links" %>

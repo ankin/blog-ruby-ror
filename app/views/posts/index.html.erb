@@ -29,8 +29,9 @@
         <div class="small-11 ">
           <% if user_signed_in? %>
               <h5 class="post_header" style="margin-bottom: 0"><%= t :welcome %> </h5>
-              <%= link_to current_user.email, "users/register/edit/profile" %>
-              <small>(<%= link_to t(:logout), "users/logout", method: :delete %>)</small>
+              <%= current_user.name %>  <small>(<%= link_to t(:edit), "users/register/edit/profile" %> | <%= link_to t(:logout), "users/logout", method: :delete %>)</small>
+
+
           <% else %>
               <%= link_to t(:login), "users/login" %>
               <br>
