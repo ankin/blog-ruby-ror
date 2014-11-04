@@ -56,3 +56,6 @@ gem "devise"
 # Facebook, Twitter ... etc. authentication: https://github.com/intridea/omniauth
 gem "omniauth"
 
+# https://github.com/semaperepelitsa/jquery.fileupload-rails
+gem "jquery.fileupload-rails"
+

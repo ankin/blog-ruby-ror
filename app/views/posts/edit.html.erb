@@ -2,7 +2,7 @@
   <li><%= link_to t(:back), posts_path %></li>
 </ul>
 
-<%= form_for :post, url: post_path(@post), method: :patch do |f| %>
+<%= form_for :post, url: post_path(@post), method: :patch, html: { multipart: true }  do |f| %>
     <% if @post.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@post.errors.count, "error") %> prohibited
@@ -23,11 +23,22 @@
       <label><%= t :text %><textarea type="text" name="post[text]" placeholder="<%= t :post_text_placeholder %>"><%= @post.text %></textarea>
       </label>
     </fieldset>
-
+<!-- TODO:
+ http://5minutenpause.com/blog/2013/09/04/multiple-file-upload-with-jquery-rails-4-and-paperclip/
+    <%= f.fields_for @post.attachments.new do |at| %>
+        <%= at.text_field :text %>
+        <%= at.file_field :image, multiple: true, name: 'post[attachment][image]' %>
+    <% end %>
+    -->
     <p>
       <%= f.submit %>
     </p>
 
 <% end %>
 
-<%= render "attachments/form" %>
+<!--
+<script id="template-upload" type="text/x-tmpl">
+<div class="upload">{%=o.name%}<div class="progress"><div class="bar" style="width: 0%"></div></div></div>
+</script>
+-->
+ <%= render "attachments/form" %>
